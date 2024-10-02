@@ -7,30 +7,53 @@
     android:layout_height="match_parent"
     tools:context=".Game">
 
+    <TextView
+        android:id="@+id/money"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        android:textSize="38sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/coin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            app:srcCompat="@drawable/coin"
+            tools:layout_editor_absoluteX="7dp" />
+    </TextView>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/life1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/full_heart" />
+            android:padding="1dp"
+            app:srcCompat="@drawable/h1" />
 
         <ImageView
             android:id="@+id/life2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/full_heart" />
+            android:padding="1dp"
+            app:srcCompat="@drawable/h1" />
 
         <ImageView
-            android:id="@+id/life"
+            android:id="@+id/life3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/full_heart" />
+            android:padding="1dp"
+            app:srcCompat="@drawable/h1" />
 
     </LinearLayout>
 
