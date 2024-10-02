@@ -35,6 +35,12 @@
             android:text="PLAY" />
 
         <Button
+            android:id="@+id/how"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOW TO PLAY" />
+
+        <Button
             android:id="@+id/settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

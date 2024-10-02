@@ -7,25 +7,38 @@
     android:layout_height="match_parent"
     tools:context=".Game">
 
-    <TextView
-        android:id="@+id/money"
-        android:layout_width="0dp"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="0"
-        android:textSize="38sp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="1dp"
+            android:text="0"
+            android:textSize="35sp" />
 
         <ImageView
             android:id="@+id/coin"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="1dp"
             app:srcCompat="@drawable/coin"
             tools:layout_editor_absoluteX="7dp" />
-    </TextView>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -38,22 +51,22 @@
             android:id="@+id/life1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="1dp"
-            app:srcCompat="@drawable/h1" />
+            android:padding="5dp"
+            app:srcCompat="@drawable/heart1" />
 
         <ImageView
             android:id="@+id/life2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="1dp"
-            app:srcCompat="@drawable/h1" />
+            android:padding="5dp"
+            app:srcCompat="@drawable/heart1" />
 
         <ImageView
             android:id="@+id/life3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="1dp"
-            app:srcCompat="@drawable/h1" />
+            android:padding="5dp"
+            app:srcCompat="@drawable/heart1" />
 
     </LinearLayout>
 
@@ -67,5 +80,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/crosshair" />
+
+    <ImageView
+        android:id="@+id/target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/heart1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
