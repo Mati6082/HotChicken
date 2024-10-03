@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ShooterGame</string>
+    <string-array name="difficulty_levels">
+        <item>Hard</item>
+        <item>Normal</item>
+        <item>Easy</item>
+    </string-array>
 </resources>
