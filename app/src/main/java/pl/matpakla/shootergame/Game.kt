@@ -1,9 +1,10 @@
 package pl.matpakla.shootergame
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -22,12 +23,15 @@ class Game : AppCompatActivity() {
     private var hoverStartTime: Long? = null
     private var targetLifeTime: Float = 5000f
     private var marginTop by Delegates.notNull<Float>()
+    private var topScore = 0
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityGameBinding.inflate(layoutInflater)
+        topScore = intent.getIntExtra("TOP SCORE", 0)
+        binding.topScore.text = "$topScore"
         marginTop = 75 * resources.displayMetrics.density
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
@@ -87,6 +91,12 @@ class Game : AppCompatActivity() {
             true
         }
 
+        binding.restart.setOnClickListener {
+            intent = Intent(this, Game::class.java)
+            intent.putExtra("TOP SCORE", topScore)
+            startActivity(intent)
+        }
+
         // MAIN SCOPE
         lifecycleScope.launch {
             var alpha = 1f
@@ -102,7 +112,12 @@ class Game : AppCompatActivity() {
                     }
                     if (System.currentTimeMillis() - hoverStartTime!! >= 100) {
                         money++
-                        binding.money.text = money.toString()
+                        if (money > topScore) money.also {
+                            topScore = it
+                            binding.topScore.text = "$topScore"
+                            binding.topScore.setTextColor(Color.RED)
+                        }
+                        binding.money.text = "$money"
 
                         when (targetLifeTime.toInt()) {
                             in 4000..5000 -> targetLifeTime *= 0.85f
@@ -135,7 +150,8 @@ class Game : AppCompatActivity() {
                 delay(50)
             }
             binding.target.visibility = View.INVISIBLE
-            Log.d("STATUS", "onCreate: GAME OVER")
+            binding.crosshair.visibility = View.INVISIBLE
+            binding.gameOverLayout.visibility = View.VISIBLE
         }
 
     }
